@@ -39,6 +39,13 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <!-- Search bar here -->
+                        <!-- <li>
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        </form>
+                        </li> -->
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -70,7 +77,7 @@
                                     </form>
                                 </div>
                             </li>
-                            
+
                         @endguest
                     </ul>
                 </div>

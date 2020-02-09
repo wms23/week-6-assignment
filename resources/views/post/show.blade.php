@@ -3,9 +3,11 @@
 @section('content')
     
     <div>
-        <h2>{{$post->title}} 
-            @if(auth()->user()->id === $post->author_id)
-                <a href="{{route('post.edit',$post->id)}}"><i class="material-icons">edit</i></a>
+        <h2>{{$post->title}}         
+            @if (auth()->check())
+                @if(auth()->user()->id === $post->author_id)
+                    <a href="{{route('post.edit',$post->id)}}"><i class="material-icons">edit</i></a>
+                @endif
             @endif
         </h2> 
         <p>Written by : <strong>{{$post->author->name}}</strong> </p>

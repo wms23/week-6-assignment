@@ -25,8 +25,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->has('query')){
+            //Search here
+        }
+
         if (auth()->guest()) {
             $posts = $this->repository->guestPost();
         } else {
