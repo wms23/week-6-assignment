@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    @if($posts->count())
 @foreach($posts as $post)
     <div>
         <h2><a href="{{route('post.show',$post->id)}}">{{$post->title}}</a></h2>
@@ -14,7 +14,9 @@
     </div>
     <hr>
 @endforeach
-
+    @else
+        <h2>No posts found</h2>
+    @endif
 {{ $posts->links() }}
 
 @endsection

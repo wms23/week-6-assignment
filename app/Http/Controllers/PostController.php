@@ -27,15 +27,19 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->has('query')){
+        if($request->has('keyword')){
             //Search here
+            $posts = $this->repository->searchPost($request->keyword);
+        }else{
+            if (auth()->guest()) {
+                $posts = $this->repository->guestPost();
+            } else {
+                $posts = $this->repository->memberPost();
+            }
+
         }
 
-        if (auth()->guest()) {
-            $posts = $this->repository->guestPost();
-        } else {
-            $posts = $this->repository->memberPost();
-        }
+
 
         return view('post.index', compact('posts'));
 
@@ -62,7 +66,8 @@ class PostController extends Controller
     {
         $this->authorize('create', \App\Post::class);
 
-        $post = $this->service->make($request->validated());
+//        $post = $this->service->make($request->validated());
+        $post = $this->service->make($request->validated(),\Auth::user());
 
         return redirect(route('post.show', $post->id));
     }
@@ -107,7 +112,7 @@ class PostController extends Controller
     {
         $post = $this->repository->find($post);
         $this->authorize('update', $post);
-       
+
         $this->service->update($request->validated(),$post);
 
         // $this->notifyAdminViaSlack("This message will send to admin");

@@ -27,6 +27,7 @@ class PostSaveRequest extends FormRequest
             'title' => 'sometimes|required|string|max:255',
             'content' => 'sometimes|required|string',
             'is_published' => 'boolean',
+            'category_id' => 'sometimes|required|string',
         ];
     }
 }

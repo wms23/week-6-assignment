@@ -28,6 +28,12 @@ Vue.component('radio-item', require('./components/RadioItem.vue').default);
 Vue.component('text-input', require('./components/TextInput.vue').default);
 
 Vue.component('textarea-input', require('./components/TextareaInput.vue').default);
+
+Vue.component('post-list', require('./components/PostList.vue').default);
+
+Vue.component('login-form', require('./components/LoginForm.vue').default);
+
+Vue.component('categories-select', require('./components/CategoriesSelect.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -37,3 +43,15 @@ Vue.component('textarea-input', require('./components/TextareaInput.vue').defaul
 const app = new Vue({
     el: '#app',
 });
+
+// es2015 module
+import Vue from 'vue'
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies);
+
+// set default config
+Vue.$cookies.config('7d')
+
+// set global cookie
+Vue.$cookies.set('theme','default');
+Vue.$cookies.set('hover-time','1s');
