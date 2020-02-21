@@ -90,4 +90,11 @@ return [
         'secret' => env('ALGOLIA_SECRET', '19587dad8a2dd28b11e5fdf49c890246'),
     ],
 
+    'elasticsearch' => [
+        'index' => env('ELASTICSEARCH_INDEX', 'laravel'),
+        'hosts' => [
+            env('ELASTICSEARCH_HOST', 'http://localhost'),
+        ],
+    ],
+
 ];
